@@ -200,9 +200,10 @@
     <section class="uk-section-small uk-section-default">
         <div class="uk-container uk-margin-large-bottom">
 
-            <article class="uk-comment uk-comment-primary uk-margin uk-text-center">
-                This tool is <b>heavily</b> WIP with plenty more features to come. Please leave your requests and reports <a href="https://github.com/EldenRingDatabase/erdb/issues" target="_blank">here</a> or find me on souls Discords (Phil25#0807).
-            </article>
+            <div uk-alert>
+                <button class="uk-alert-close" type="button" aria-label="Close" uk-close></button>
+                <p>This tool is <b>heavily</b> WIP with plenty more features to come. Please leave your requests and reports <a href="https://github.com/EldenRingDatabase/erdb/issues" target="_blank">here</a> or find me on souls Discords (Phil25#0807).</p>
+            </div>
 
             <div class="uk-grid uk-grid-divider" uk-grid>
 
@@ -266,8 +267,17 @@
                 <h6 class="uk-modal-title">Armament Selector</h6>
             </div>
             <div class="uk-modal-body" uk-overflow-auto>
+                <div class="uk-grid-small" uk-grid>
+                    <div class="uk-inline uk-width-expand">
+                        <span class="uk-form-icon uk-form-icon-flip" data-uk-icon="icon:search"></span>
+                        <input id="filter-armament-selection" class="uk-input uk-width-1-1" type="text" placeholder="Filter..." autofocus>
+                    </div>
+                    <div class="uk-inline uk-width-auto">
+                        <button id="toggle-armament-selection" class="uk-button uk-button-default uk-text-italic" href="#">&nbsp;<span uk-icon="plus-circle"></span> Toggle All</button>
+                    </div>
+                </div>
                 <div id="armament-selection-grid" class="uk-dropdown-grid uk-child-width-1-2@s uk-child-width-1-3@m" uk-grid="masonry:true">
-                        <div>
+                        <div id="armament-selection-category-dagger">
                             <ul class="uk-nav">
                                 <li class="uk-nav-header"><b>Dagger</b></li>
                                 <li><a id="selection-category-dagger" data-armament-category="Dagger" class="uk-button-default uk-text-italic" href="#">&nbsp;<span uk-icon="plus-circle"></span> Toggle All</a></li>
@@ -289,7 +299,7 @@
                                         <li><a id="selection-armament-blade-of-calling" data-armament-key="Blade of Calling" data-armament-category="Dagger" class="uk-button-default" href="#">&nbsp;<span class="uk-icon uk-icon-image" style="background-image:url(https://assets.erdb.workers.dev/icons/armaments/10016/icon)"></span> Blade of Calling</a></li>
                             </ul>
                         </div>
-                        <div>
+                        <div id="armament-selection-category-straight-sword">
                             <ul class="uk-nav">
                                 <li class="uk-nav-header"><b>Straight Sword</b></li>
                                 <li><a id="selection-category-straight-sword" data-armament-category="Straight Sword" class="uk-button-default uk-text-italic" href="#">&nbsp;<span uk-icon="plus-circle"></span> Toggle All</a></li>
@@ -314,7 +324,7 @@
                                         <li><a id="selection-armament-rotten-crystal-sword" data-armament-key="Rotten Crystal Sword" data-armament-category="Straight Sword" class="uk-button-default" href="#">&nbsp;<span class="uk-icon uk-icon-image" style="background-image:url(https://assets.erdb.workers.dev/icons/armaments/10065/icon)"></span> Rotten Crystal Sword</a></li>
                             </ul>
                         </div>
-                        <div>
+                        <div id="armament-selection-category-greatsword">
                             <ul class="uk-nav">
                                 <li class="uk-nav-header"><b>Greatsword</b></li>
                                 <li><a id="selection-category-greatsword" data-armament-category="Greatsword" class="uk-button-default uk-text-italic" href="#">&nbsp;<span uk-icon="plus-circle"></span> Toggle All</a></li>
@@ -341,7 +351,7 @@
                                         <li><a id="selection-armament-gargoyles-blackblade" data-armament-key="Gargoyle's Blackblade" data-armament-category="Greatsword" class="uk-button-default" href="#">&nbsp;<span class="uk-icon uk-icon-image" style="background-image:url(https://assets.erdb.workers.dev/icons/armaments/10101/icon)"></span> Gargoyle's Blackblade</a></li>
                             </ul>
                         </div>
-                        <div>
+                        <div id="armament-selection-category-colossal-sword">
                             <ul class="uk-nav">
                                 <li class="uk-nav-header"><b>Colossal Sword</b></li>
                                 <li><a id="selection-category-colossal-sword" data-armament-category="Colossal Sword" class="uk-button-default uk-text-italic" href="#">&nbsp;<span uk-icon="plus-circle"></span> Toggle All</a></li>
@@ -358,7 +368,7 @@
                                         <li><a id="selection-armament-troll-knights-sword" data-armament-key="Troll Knight's Sword" data-armament-category="Colossal Sword" class="uk-button-default" href="#">&nbsp;<span class="uk-icon uk-icon-image" style="background-image:url(https://assets.erdb.workers.dev/icons/armaments/10132/icon)"></span> Troll Knight's Sword</a></li>
                             </ul>
                         </div>
-                        <div>
+                        <div id="armament-selection-category-curved-sword">
                             <ul class="uk-nav">
                                 <li class="uk-nav-header"><b>Curved Sword</b></li>
                                 <li><a id="selection-category-curved-sword" data-armament-category="Curved Sword" class="uk-button-default uk-text-italic" href="#">&nbsp;<span uk-icon="plus-circle"></span> Toggle All</a></li>
@@ -379,7 +389,7 @@
                                         <li><a id="selection-armament-grossmesser" data-armament-key="Grossmesser" data-armament-category="Curved Sword" class="uk-button-default" href="#">&nbsp;<span class="uk-icon uk-icon-image" style="background-image:url(https://assets.erdb.workers.dev/icons/armaments/10255/icon)"></span> Grossmesser</a></li>
                             </ul>
                         </div>
-                        <div>
+                        <div id="armament-selection-category-curved-greatsword">
                             <ul class="uk-nav">
                                 <li class="uk-nav-header"><b>Curved Greatsword</b></li>
                                 <li><a id="selection-category-curved-greatsword" data-armament-category="Curved Greatsword" class="uk-button-default uk-text-italic" href="#">&nbsp;<span uk-icon="plus-circle"></span> Toggle All</a></li>
@@ -394,7 +404,7 @@
                                         <li><a id="selection-armament-morgotts-cursed-sword" data-armament-key="Morgott's Cursed Sword" data-armament-category="Curved Greatsword" class="uk-button-default" href="#">&nbsp;<span class="uk-icon uk-icon-image" style="background-image:url(https://assets.erdb.workers.dev/icons/armaments/10288/icon)"></span> Morgott's Cursed Sword</a></li>
                             </ul>
                         </div>
-                        <div>
+                        <div id="armament-selection-category-katana">
                             <ul class="uk-nav">
                                 <li class="uk-nav-header"><b>Katana</b></li>
                                 <li><a id="selection-category-katana" data-armament-category="Katana" class="uk-button-default uk-text-italic" href="#">&nbsp;<span uk-icon="plus-circle"></span> Toggle All</a></li>
@@ -408,7 +418,7 @@
                                         <li><a id="selection-armament-serpentbone-blade" data-armament-key="Serpentbone Blade" data-armament-category="Katana" class="uk-button-default" href="#">&nbsp;<span class="uk-icon uk-icon-image" style="background-image:url(https://assets.erdb.workers.dev/icons/armaments/10328/icon)"></span> Serpentbone Blade</a></li>
                             </ul>
                         </div>
-                        <div>
+                        <div id="armament-selection-category-twinblade">
                             <ul class="uk-nav">
                                 <li class="uk-nav-header"><b>Twinblade</b></li>
                                 <li><a id="selection-category-twinblade" data-armament-category="Twinblade" class="uk-button-default uk-text-italic" href="#">&nbsp;<span uk-icon="plus-circle"></span> Toggle All</a></li>
@@ -420,7 +430,7 @@
                                         <li><a id="selection-armament-gargoyles-black-blades" data-armament-key="Gargoyle's Black Blades" data-armament-category="Twinblade" class="uk-button-default" href="#">&nbsp;<span class="uk-icon uk-icon-image" style="background-image:url(https://assets.erdb.workers.dev/icons/armaments/10368/icon)"></span> Gargoyle's Black Blades</a></li>
                             </ul>
                         </div>
-                        <div>
+                        <div id="armament-selection-category-thrusting-sword">
                             <ul class="uk-nav">
                                 <li class="uk-nav-header"><b>Thrusting Sword</b></li>
                                 <li><a id="selection-category-thrusting-sword" data-armament-category="Thrusting Sword" class="uk-button-default uk-text-italic" href="#">&nbsp;<span uk-icon="plus-circle"></span> Toggle All</a></li>
@@ -433,7 +443,7 @@
                                         <li><a id="selection-armament-nobles-estoc" data-armament-key="Noble's Estoc" data-armament-category="Thrusting Sword" class="uk-button-default" href="#">&nbsp;<span class="uk-icon uk-icon-image" style="background-image:url(https://assets.erdb.workers.dev/icons/armaments/10166/icon)"></span> Noble's Estoc</a></li>
                             </ul>
                         </div>
-                        <div>
+                        <div id="armament-selection-category-heavy-thrusting-sword">
                             <ul class="uk-nav">
                                 <li class="uk-nav-header"><b>Heavy Thrusting Sword</b></li>
                                 <li><a id="selection-category-heavy-thrusting-sword" data-armament-category="Heavy Thrusting Sword" class="uk-button-default uk-text-italic" href="#">&nbsp;<span uk-icon="plus-circle"></span> Toggle All</a></li>
@@ -443,7 +453,7 @@
                                         <li><a id="selection-armament-dragon-kings-cragblade" data-armament-key="Dragon King's Cragblade" data-armament-category="Heavy Thrusting Sword" class="uk-button-default" href="#">&nbsp;<span class="uk-icon uk-icon-image" style="background-image:url(https://assets.erdb.workers.dev/icons/armaments/10204/icon)"></span> Dragon King's Cragblade</a></li>
                             </ul>
                         </div>
-                        <div>
+                        <div id="armament-selection-category-axe">
                             <ul class="uk-nav">
                                 <li class="uk-nav-header"><b>Axe</b></li>
                                 <li><a id="selection-category-axe" data-armament-category="Axe" class="uk-button-default uk-text-italic" href="#">&nbsp;<span uk-icon="plus-circle"></span> Toggle All</a></li>
@@ -462,7 +472,7 @@
                                         <li><a id="selection-armament-warped-axe" data-armament-key="Warped Axe" data-armament-category="Axe" class="uk-button-default" href="#">&nbsp;<span class="uk-icon uk-icon-image" style="background-image:url(https://assets.erdb.workers.dev/icons/armaments/10561/icon)"></span> Warped Axe</a></li>
                             </ul>
                         </div>
-                        <div>
+                        <div id="armament-selection-category-greataxe">
                             <ul class="uk-nav">
                                 <li class="uk-nav-header"><b>Greataxe</b></li>
                                 <li><a id="selection-category-greataxe" data-armament-category="Greataxe" class="uk-button-default uk-text-italic" href="#">&nbsp;<span uk-icon="plus-circle"></span> Toggle All</a></li>
@@ -479,7 +489,7 @@
                                         <li><a id="selection-armament-gargoyles-black-axe" data-armament-key="Gargoyle's Black Axe" data-armament-category="Greataxe" class="uk-button-default" href="#">&nbsp;<span class="uk-icon uk-icon-image" style="background-image:url(https://assets.erdb.workers.dev/icons/armaments/10574/icon)"></span> Gargoyle's Black Axe</a></li>
                             </ul>
                         </div>
-                        <div>
+                        <div id="armament-selection-category-hammer">
                             <ul class="uk-nav">
                                 <li class="uk-nav-header"><b>Hammer</b></li>
                                 <li><a id="selection-category-hammer" data-armament-category="Hammer" class="uk-button-default uk-text-italic" href="#">&nbsp;<span uk-icon="plus-circle"></span> Toggle All</a></li>
@@ -500,7 +510,7 @@
                                         <li><a id="selection-armament-marikas-hammer" data-armament-key="Marika's Hammer" data-armament-category="Hammer" class="uk-button-default" href="#">&nbsp;<span class="uk-icon uk-icon-image" style="background-image:url(https://assets.erdb.workers.dev/icons/armaments/10414/icon)"></span> Marika's Hammer</a></li>
                             </ul>
                         </div>
-                        <div>
+                        <div id="armament-selection-category-great-hammer">
                             <ul class="uk-nav">
                                 <li class="uk-nav-header"><b>Great Hammer</b></li>
                                 <li><a id="selection-category-great-hammer" data-armament-category="Great Hammer" class="uk-button-default uk-text-italic" href="#">&nbsp;<span uk-icon="plus-circle"></span> Toggle All</a></li>
@@ -520,7 +530,7 @@
                                         <li><a id="selection-armament-rotten-battle-hammer" data-armament-key="Rotten Battle Hammer" data-armament-category="Great Hammer" class="uk-button-default" href="#">&nbsp;<span class="uk-icon uk-icon-image" style="background-image:url(https://assets.erdb.workers.dev/icons/armaments/10453/icon)"></span> Rotten Battle Hammer</a></li>
                             </ul>
                         </div>
-                        <div>
+                        <div id="armament-selection-category-flail">
                             <ul class="uk-nav">
                                 <li class="uk-nav-header"><b>Flail</b></li>
                                 <li><a id="selection-category-flail" data-armament-category="Flail" class="uk-button-default uk-text-italic" href="#">&nbsp;<span uk-icon="plus-circle"></span> Toggle All</a></li>
@@ -531,7 +541,7 @@
                                         <li><a id="selection-armament-chainlink-flail" data-armament-key="Chainlink Flail" data-armament-category="Flail" class="uk-button-default" href="#">&nbsp;<span class="uk-icon uk-icon-image" style="background-image:url(https://assets.erdb.workers.dev/icons/armaments/10484/icon)"></span> Chainlink Flail</a></li>
                             </ul>
                         </div>
-                        <div>
+                        <div id="armament-selection-category-spear">
                             <ul class="uk-nav">
                                 <li class="uk-nav-header"><b>Spear</b></li>
                                 <li><a id="selection-category-spear" data-armament-category="Spear" class="uk-button-default uk-text-italic" href="#">&nbsp;<span uk-icon="plus-circle"></span> Toggle All</a></li>
@@ -553,7 +563,7 @@
                                         <li><a id="selection-armament-rotten-crystal-spear" data-armament-key="Rotten Crystal Spear" data-armament-category="Spear" class="uk-button-default" href="#">&nbsp;<span class="uk-icon uk-icon-image" style="background-image:url(https://assets.erdb.workers.dev/icons/armaments/10616/icon)"></span> Rotten Crystal Spear</a></li>
                             </ul>
                         </div>
-                        <div>
+                        <div id="armament-selection-category-great-spear">
                             <ul class="uk-nav">
                                 <li class="uk-nav-header"><b>Great Spear</b></li>
                                 <li><a id="selection-category-great-spear" data-armament-category="Great Spear" class="uk-button-default uk-text-italic" href="#">&nbsp;<span uk-icon="plus-circle"></span> Toggle All</a></li>
@@ -565,7 +575,7 @@
                                         <li><a id="selection-armament-treespear" data-armament-key="Treespear" data-armament-category="Great Spear" class="uk-button-default" href="#">&nbsp;<span class="uk-icon uk-icon-image" style="background-image:url(https://assets.erdb.workers.dev/icons/armaments/10647/icon)"></span> Treespear</a></li>
                             </ul>
                         </div>
-                        <div>
+                        <div id="armament-selection-category-halberd">
                             <ul class="uk-nav">
                                 <li class="uk-nav-header"><b>Halberd</b></li>
                                 <li><a id="selection-category-halberd" data-armament-category="Halberd" class="uk-button-default uk-text-italic" href="#">&nbsp;<span uk-icon="plus-circle"></span> Toggle All</a></li>
@@ -587,7 +597,7 @@
                                         <li><a id="selection-armament-gargoyles-black-halberd" data-armament-key="Gargoyle's Black Halberd" data-armament-category="Halberd" class="uk-button-default" href="#">&nbsp;<span class="uk-icon uk-icon-image" style="background-image:url(https://assets.erdb.workers.dev/icons/armaments/10696/icon)"></span> Gargoyle's Black Halberd</a></li>
                             </ul>
                         </div>
-                        <div>
+                        <div id="armament-selection-category-reaper">
                             <ul class="uk-nav">
                                 <li class="uk-nav-header"><b>Reaper</b></li>
                                 <li><a id="selection-category-reaper" data-armament-category="Reaper" class="uk-button-default uk-text-italic" href="#">&nbsp;<span uk-icon="plus-circle"></span> Toggle All</a></li>
@@ -597,7 +607,7 @@
                                         <li><a id="selection-armament-winged-scythe" data-armament-key="Winged Scythe" data-armament-category="Reaper" class="uk-button-default" href="#">&nbsp;<span class="uk-icon uk-icon-image" style="background-image:url(https://assets.erdb.workers.dev/icons/armaments/10726/icon)"></span> Winged Scythe</a></li>
                             </ul>
                         </div>
-                        <div>
+                        <div id="armament-selection-category-fist">
                             <ul class="uk-nav">
                                 <li class="uk-nav-header"><b>Fist</b></li>
                                 <li><a id="selection-category-fist" data-armament-category="Fist" class="uk-button-default uk-text-italic" href="#">&nbsp;<span uk-icon="plus-circle"></span> Toggle All</a></li>
@@ -612,7 +622,7 @@
                                         <li><a id="selection-armament-cipher-pata" data-armament-key="Cipher Pata" data-armament-category="Fist" class="uk-button-default" href="#">&nbsp;<span class="uk-icon uk-icon-image" style="background-image:url(https://assets.erdb.workers.dev/icons/armaments/10812/icon)"></span> Cipher Pata</a></li>
                             </ul>
                         </div>
-                        <div>
+                        <div id="armament-selection-category-claw">
                             <ul class="uk-nav">
                                 <li class="uk-nav-header"><b>Claw</b></li>
                                 <li><a id="selection-category-claw" data-armament-category="Claw" class="uk-button-default uk-text-italic" href="#">&nbsp;<span uk-icon="plus-circle"></span> Toggle All</a></li>
@@ -622,7 +632,7 @@
                                         <li><a id="selection-armament-raptor-talons" data-armament-key="Raptor Talons" data-armament-category="Claw" class="uk-button-default" href="#">&nbsp;<span class="uk-icon uk-icon-image" style="background-image:url(https://assets.erdb.workers.dev/icons/armaments/10843/icon)"></span> Raptor Talons</a></li>
                             </ul>
                         </div>
-                        <div>
+                        <div id="armament-selection-category-whip">
                             <ul class="uk-nav">
                                 <li class="uk-nav-header"><b>Whip</b></li>
                                 <li><a id="selection-category-whip" data-armament-category="Whip" class="uk-button-default uk-text-italic" href="#">&nbsp;<span uk-icon="plus-circle"></span> Toggle All</a></li>
@@ -634,7 +644,7 @@
                                         <li><a id="selection-armament-urumi" data-armament-key="Urumi" data-armament-category="Whip" class="uk-button-default" href="#">&nbsp;<span class="uk-icon uk-icon-image" style="background-image:url(https://assets.erdb.workers.dev/icons/armaments/10767/icon)"></span> Urumi</a></li>
                             </ul>
                         </div>
-                        <div>
+                        <div id="armament-selection-category-colossal-weapon">
                             <ul class="uk-nav">
                                 <li class="uk-nav-header"><b>Colossal Weapon</b></li>
                                 <li><a id="selection-category-colossal-weapon" data-armament-category="Colossal Weapon" class="uk-button-default uk-text-italic" href="#">&nbsp;<span uk-icon="plus-circle"></span> Toggle All</a></li>
@@ -655,7 +665,7 @@
                                         <li><a id="selection-armament-rotten-greataxe" data-armament-key="Rotten Greataxe" data-armament-category="Colossal Weapon" class="uk-button-default" href="#">&nbsp;<span class="uk-icon uk-icon-image" style="background-image:url(https://assets.erdb.workers.dev/icons/armaments/10895/icon)"></span> Rotten Greataxe</a></li>
                             </ul>
                         </div>
-                        <div>
+                        <div id="armament-selection-category-light-bow">
                             <ul class="uk-nav">
                                 <li class="uk-nav-header"><b>Light Bow</b></li>
                                 <li><a id="selection-category-light-bow" data-armament-category="Light Bow" class="uk-button-default uk-text-italic" href="#">&nbsp;<span uk-icon="plus-circle"></span> Toggle All</a></li>
@@ -666,7 +676,7 @@
                                         <li><a id="selection-armament-composite-bow" data-armament-key="Composite Bow" data-armament-category="Light Bow" class="uk-button-default" href="#">&nbsp;<span class="uk-icon uk-icon-image" style="background-image:url(https://assets.erdb.workers.dev/icons/armaments/11005/icon)"></span> Composite Bow</a></li>
                             </ul>
                         </div>
-                        <div>
+                        <div id="armament-selection-category-bow">
                             <ul class="uk-nav">
                                 <li class="uk-nav-header"><b>Bow</b></li>
                                 <li><a id="selection-category-bow" data-armament-category="Bow" class="uk-button-default uk-text-italic" href="#">&nbsp;<span uk-icon="plus-circle"></span> Toggle All</a></li>
@@ -679,7 +689,7 @@
                                         <li><a id="selection-armament-black-bow" data-armament-key="Black Bow" data-armament-category="Bow" class="uk-button-default" href="#">&nbsp;<span class="uk-icon uk-icon-image" style="background-image:url(https://assets.erdb.workers.dev/icons/armaments/11047/icon)"></span> Black Bow</a></li>
                             </ul>
                         </div>
-                        <div>
+                        <div id="armament-selection-category-greatbow">
                             <ul class="uk-nav">
                                 <li class="uk-nav-header"><b>Greatbow</b></li>
                                 <li><a id="selection-category-greatbow" data-armament-category="Greatbow" class="uk-button-default uk-text-italic" href="#">&nbsp;<span uk-icon="plus-circle"></span> Toggle All</a></li>
@@ -689,7 +699,7 @@
                                         <li><a id="selection-armament-greatbow" data-armament-key="Greatbow" data-armament-category="Greatbow" class="uk-button-default" href="#">&nbsp;<span class="uk-icon uk-icon-image" style="background-image:url(https://assets.erdb.workers.dev/icons/armaments/11084/icon)"></span> Greatbow</a></li>
                             </ul>
                         </div>
-                        <div>
+                        <div id="armament-selection-category-crossbow">
                             <ul class="uk-nav">
                                 <li class="uk-nav-header"><b>Crossbow</b></li>
                                 <li><a id="selection-category-crossbow" data-armament-category="Crossbow" class="uk-button-default uk-text-italic" href="#">&nbsp;<span uk-icon="plus-circle"></span> Toggle All</a></li>
@@ -702,7 +712,7 @@
                                         <li><a id="selection-armament-crepuss-black-key-crossbow" data-armament-key="Crepus's Black-Key Crossbow" data-armament-category="Crossbow" class="uk-button-default" href="#">&nbsp;<span class="uk-icon uk-icon-image" style="background-image:url(https://assets.erdb.workers.dev/icons/armaments/11128/icon)"></span> Crepus's Black-Key Crossbow</a></li>
                             </ul>
                         </div>
-                        <div>
+                        <div id="armament-selection-category-ballista">
                             <ul class="uk-nav">
                                 <li class="uk-nav-header"><b>Ballista</b></li>
                                 <li><a id="selection-category-ballista" data-armament-category="Ballista" class="uk-button-default uk-text-italic" href="#">&nbsp;<span uk-icon="plus-circle"></span> Toggle All</a></li>
@@ -710,7 +720,7 @@
                                         <li><a id="selection-armament-jar-cannon" data-armament-key="Jar Cannon" data-armament-category="Ballista" class="uk-button-default" href="#">&nbsp;<span class="uk-icon uk-icon-image" style="background-image:url(https://assets.erdb.workers.dev/icons/armaments/11161/icon)"></span> Jar Cannon</a></li>
                             </ul>
                         </div>
-                        <div>
+                        <div id="armament-selection-category-glintstone-staff">
                             <ul class="uk-nav">
                                 <li class="uk-nav-header"><b>Glintstone Staff</b></li>
                                 <li><a id="selection-category-glintstone-staff" data-armament-category="Glintstone Staff" class="uk-button-default uk-text-italic" href="#">&nbsp;<span uk-icon="plus-circle"></span> Toggle All</a></li>
@@ -734,7 +744,7 @@
                                         <li><a id="selection-armament-staff-of-loss" data-armament-key="Staff of Loss" data-armament-category="Glintstone Staff" class="uk-button-default" href="#">&nbsp;<span class="uk-icon uk-icon-image" style="background-image:url(https://assets.erdb.workers.dev/icons/armaments/11219/icon)"></span> Staff of Loss</a></li>
                             </ul>
                         </div>
-                        <div>
+                        <div id="armament-selection-category-sacred-seal">
                             <ul class="uk-nav">
                                 <li class="uk-nav-header"><b>Sacred Seal</b></li>
                                 <li><a id="selection-category-sacred-seal" data-armament-category="Sacred Seal" class="uk-button-default uk-text-italic" href="#">&nbsp;<span uk-icon="plus-circle"></span> Toggle All</a></li>
@@ -749,7 +759,7 @@
                                         <li><a id="selection-armament-frenzied-flame-seal" data-armament-key="Frenzied Flame Seal" data-armament-category="Sacred Seal" class="uk-button-default" href="#">&nbsp;<span class="uk-icon uk-icon-image" style="background-image:url(https://assets.erdb.workers.dev/icons/armaments/11249/icon)"></span> Frenzied Flame Seal</a></li>
                             </ul>
                         </div>
-                        <div>
+                        <div id="armament-selection-category-small-shield">
                             <ul class="uk-nav">
                                 <li class="uk-nav-header"><b>Small Shield</b></li>
                                 <li><a id="selection-category-small-shield" data-armament-category="Small Shield" class="uk-button-default uk-text-italic" href="#">&nbsp;<span uk-icon="plus-circle"></span> Toggle All</a></li>
@@ -772,7 +782,7 @@
                                         <li><a id="selection-armament-shield-of-the-guilty" data-armament-key="Shield of the Guilty" data-armament-category="Small Shield" class="uk-button-default" href="#">&nbsp;<span class="uk-icon uk-icon-image" style="background-image:url(https://assets.erdb.workers.dev/icons/armaments/12053/icon)"></span> Shield of the Guilty</a></li>
                             </ul>
                         </div>
-                        <div>
+                        <div id="armament-selection-category-medium-shield">
                             <ul class="uk-nav">
                                 <li class="uk-nav-header"><b>Medium Shield</b></li>
                                 <li><a id="selection-category-medium-shield" data-armament-category="Medium Shield" class="uk-button-default uk-text-italic" href="#">&nbsp;<span uk-icon="plus-circle"></span> Toggle All</a></li>
@@ -805,7 +815,7 @@
                                         <li><a id="selection-armament-black-leather-shield" data-armament-key="Black Leather Shield" data-armament-category="Medium Shield" class="uk-button-default" href="#">&nbsp;<span class="uk-icon uk-icon-image" style="background-image:url(https://assets.erdb.workers.dev/icons/armaments/12070/icon)"></span> Black Leather Shield</a></li>
                             </ul>
                         </div>
-                        <div>
+                        <div id="armament-selection-category-greatshield">
                             <ul class="uk-nav">
                                 <li class="uk-nav-header"><b>Greatshield</b></li>
                                 <li><a id="selection-category-greatshield" data-armament-category="Greatshield" class="uk-button-default uk-text-italic" href="#">&nbsp;<span uk-icon="plus-circle"></span> Toggle All</a></li>
@@ -836,7 +846,7 @@
                                         <li><a id="selection-armament-lordsworns-shield" data-armament-key="Lordsworn's Shield" data-armament-category="Greatshield" class="uk-button-default" href="#">&nbsp;<span class="uk-icon uk-icon-image" style="background-image:url(https://assets.erdb.workers.dev/icons/armaments/12108/icon)"></span> Lordsworn's Shield</a></li>
                             </ul>
                         </div>
-                        <div>
+                        <div id="armament-selection-category-torch">
                             <ul class="uk-nav">
                                 <li class="uk-nav-header"><b>Torch</b></li>
                                 <li><a id="selection-category-torch" data-armament-category="Torch" class="uk-button-default uk-text-italic" href="#">&nbsp;<span uk-icon="plus-circle"></span> Toggle All</a></li>
